@@ -1,0 +1,18 @@
+DEFAULT menu.c32
+MENU TITLE ULTIMATE PXE SERVER - By Griffon - Ver 1.0
+PROMPT 0 
+TIMEOUT 0
+
+MENU COLOR TABMSG  37;40  #ffffffff #00000000
+MENU COLOR TITLE   37;40  #ffffffff #00000000 
+MENU COLOR SEL      7     #ffffffff #00000000
+MENU COLOR UNSEL    37;40 #ffffffff #00000000
+MENU COLOR BORDER   37;40 #ffffffff #00000000
+
+LABEL Ubuntu Server 18.04
+    kernel /boot/server/linux
+    append vga=788 initrd=/boot/server/initrd.gz
+
+LABEL Ubuntu Desktop 18.04
+    kernel /boot/casper/vmlinuz
+    append nfsroot=192.168.122.2:/var/www/html/bionic/desktop netboot=nfs ro file=/cdrom/preseed/ubuntu.seed boot=casper initrd=boot/casper/initrd systemd.mask=tmp.mount --
